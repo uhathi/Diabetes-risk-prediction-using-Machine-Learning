@@ -1,9 +1,16 @@
-## Diabetes Risk Prediction using Machine Learning ##
+# 🩺 Diabetes Risk Prediction using Machine Learning
 
 ## Overview
 This project builds and evaluates multiple machine learning models to predict diabetes risk using a large-scale public health dataset.
 
 The focus is on improving early detection by prioritizing **recall**, ensuring that high-risk individuals are not missed while maintaining overall model performance.
+
+
+## Key Results
+- Best Model: **Support Vector Machine (SVM)**
+- Recall (Diabetic Class): **0.80**
+- Key Insight: Accuracy alone is misleading in imbalanced healthcare datasets
+
 
 ## Dataset
 - Source: UCI Machine Learning Repository  
@@ -16,6 +23,7 @@ The focus is on improving early detection by prioritizing **recall**, ensuring t
   - General Health Indicators
 
 This dataset is significantly larger and more representative than commonly used diabetes datasets, enabling more robust modeling.
+
 
 ## Objective
 - Build and compare multiple classification models for diabetes prediction  
@@ -75,9 +83,8 @@ Models were evaluated using:
 * Confusion Matrix
 Since the dataset is imbalanced, special emphasis was placed on **Recall and F1-score for the diabetic (minority) class**
 
-## Model Performance
 
-## 📊 Model Performance Comparison
+## Model Performance
 
 | Model               |Accuracy | ROC-AUC | Recall (Class 1) | Precision (Class 1) | F1 Score (Class 1) |
 |---------------------|---------|---------|-------------------|---------------------|-------------------|
@@ -89,13 +96,21 @@ Since the dataset is imbalanced, special emphasis was placed on **Recall and F1-
 
 Class 1 represents diabetic patients. Recall is prioritized to minimize false negatives in medical diagnosis.
 
-## Results Summary
-- Support Vector Machine (SVM) achieved the best overall balance between Recall, F1-score, and ROC-AUC  
-- Ensemble model achieved slightly higher accuracy but lower recall for diabetic cases  
-- Decision Tree showed high recall but at the cost of increased false positives  
-- KNN underperformed due to sensitivity to class imbalance and feature scaling  
+## 📊 Visualizations
 
-**Final Model Selected:** Support Vector Machine (SVM)
+### Confusion Matrix (SVM)
+![Confusion Matrix](images/confusion_matrix.png)
+
+### Feature Importance (Tuned Decision Tree)
+![Feature Importance](images/feature_importance.png)
+
+## Results Summary
+- SVM achieved the best balance between **recall (0.80)** and overall model stability  
+- KNN achieved the highest accuracy (83%) but failed to detect diabetic cases effectively (recall = 0.24)  
+- Decision Tree maximized recall (0.81) but produced a high number of false positives  
+- Ensemble model improved accuracy but did not improve recall sufficiently  
+
+These results highlight the importance of selecting models based on problem context rather than accuracy alone.
 
 
 ## Final Model Selection
@@ -112,7 +127,8 @@ This makes it more suitable for real-world healthcare scenarios where missing a 
 - Class imbalance negatively impacted distance-based models like KNN  
 - Decision Trees tend to overfit, leading to higher recall but lower precision  
 - Hyperparameter tuning significantly improved model performance across all models  
-- Prioritizing recall is critical in healthcare applications to reduce false negatives  
+- Prioritizing recall is critical in healthcare applications to reduce false negatives
+- Accuracy is not a reliable metric for imbalanced healthcare datasets, as demonstrated by KNN’s poor recall despite high accuracy
 
 
 ## Model Optimization & Contribution
